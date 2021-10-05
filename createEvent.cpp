@@ -41,7 +41,7 @@ int main(int argc, char* argv[]){
 
   //***** TO CHANGE THE COINCIDENCE WINDOW *****//
   int timewindow = 10000;  // (nanoseconds for 100 MSPS module)
-  //............................................//
+  //..................test..........................//
 
   std::cout << "runConverter is working on: " << argv[1] << std::endl;
 
