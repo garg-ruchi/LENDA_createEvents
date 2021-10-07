@@ -62,6 +62,8 @@ int main(int argc, char* argv[]){
   int nEvents;              // number of events per entry
 
   // Variables for output file
+  vector<double> t_RFQ_JENSA;
+
   vector<int> e_Pulser_JENSA;
   vector<double> t_Pulser_JENSA;
 
@@ -106,6 +108,8 @@ int main(int argc, char* argv[]){
 
   // Create tree and branches for output file
   TTree *tOut = new TTree("t","FP Tree");
+  tOut->Branch("time_RFQ_JENSA", "vector<double>", &t_RFQ_JENSA);
+
   tOut->Branch("energy_Pulser_JENSA", "vector<int>", &e_Pulser_JENSA);
   tOut->Branch("time_Pulser_JENSA", "vector<double>", &t_Pulser_JENSA);
 
@@ -200,6 +204,8 @@ int main(int argc, char* argv[]){
         t_LScin.clear();
         m_LScin = 0;
 
+        t_RFQ_JENSA.clear();
+
         e_Pulser_JENSA.clear();
         t_Pulser_JENSA.clear();
 
@@ -253,6 +259,9 @@ int main(int argc, char* argv[]){
             e_SiMon2.push_back(energy);
             t_SiMon2.push_back(time);
             m_SiMon2++;
+          }
+          else if(chan==2){
+            t_RFQ_JENSA.push_back(time);
           }
           else if(chan==3){//JENSA pulser
             e_Pulser_JENSA.push_back(energy);
